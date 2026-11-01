@@ -25,5 +25,3 @@ def ultimas_linhas(url,qtd):
 dados_gerais = visualizar_dados(dados)
 primeiros_elementos = primeiras_linhas(dados,10)
 ultimos_elementos = ultimas_linhas(dados, 5)
-
-print(ultimos_elementos)
