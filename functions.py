@@ -1,4 +1,3 @@
-import pandas as pd
 import matplotlib.pyplot as plt
 
 def visualizar_dados(url):
@@ -73,3 +72,21 @@ def bairros_apartamentos(dado):
         kind='bar', figsize=(14,8),color='blue',xlabel ='Bairros', ylabel = 'Apartamentos',title='Bairros com mais apartamentos'
     )
     return plt.show()
+
+def verificacao_nulos(dado):
+    """
+    Essa função retorna quantos valores são nulos em uma variável
+    """
+    return dado.isnull().sum()
+
+def valores_nulos(dado):
+    """
+    Essa função retorna a substituição de todos os valores nulos de uma variável por 0
+    """
+    return dado.fillna(0)
+
+def eliminar_nulos(dado):
+    """
+    Essa função elimina registros com valores nulos de uma variável
+    """
+    return dado.dropna(subset=['Valor', 'Condominio'], inplace=True)

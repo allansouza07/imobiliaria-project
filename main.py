@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from functions import visualizar_dados, primeiras_linhas, ultimas_linhas, shape_array, column_array,info_array, mean_columns, grafico_valor, grafico_percentual, bairros_apartamentos
+from functions import visualizar_dados, primeiras_linhas, ultimas_linhas, shape_array, column_array,info_array, mean_columns, grafico_valor, grafico_percentual, bairros_apartamentos, verificacao_nulos,valores_nulos, eliminar_nulos
 
 #IMPORTANDO OS DADOS DA TABELA
 url = 'https://raw.githubusercontent.com/alura-cursos/pandas-conhecendo-a-biblioteca/main/base-de-dados/aluguel.csv'
@@ -34,9 +34,8 @@ media_array = mean_columns(dados['Valor'])
 visualizacao_grafico = grafico_valor(df_preco_tipo)
 porcentagem_grafico = grafico_percentual(porcentos)
 bairros_com_mais_apartamentos = bairros_apartamentos(dados)
-
-
-
-
+verificacao_valores_nulos = verificacao_nulos(dados)
+substituicao_valores_nulos = valores_nulos(dados)
+eliminacao_valores_nulos = eliminar_nulos(dados)
 
 
