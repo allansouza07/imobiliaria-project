@@ -1,6 +1,5 @@
 import pandas as pd
-import matplotlib.pyplot as plt
-from functions import visualizar_dados, primeiras_linhas, ultimas_linhas, shape_array, column_array,info_array, mean_columns, grafico_valor, grafico_percentual, bairros_apartamentos, verificacao_nulos,valores_nulos, eliminar_nulos,analisar_quartos_unicos,analisar_quartos
+from functions import visualizar_dados, primeiras_linhas, ultimas_linhas, shape_array, column_array,info_array, mean_columns, grafico_valor, grafico_percentual, bairros_apartamentos, verificacao_nulos,valores_nulos, eliminar_nulos,analisar_quartos_unicos,analisar_quartos,salvar_dados
 
 #IMPORTANDO OS DADOS DA TABELA
 url = 'https://raw.githubusercontent.com/alura-cursos/pandas-conhecendo-a-biblioteca/main/base-de-dados/aluguel.csv'
@@ -29,5 +28,8 @@ substituicao_valores_nulos = valores_nulos(dados)
 eliminacao_valores_nulos = eliminar_nulos(dados)
 analise_quarto_unico = analisar_quartos_unicos(dados)
 analise_quartos = analisar_quartos(dados)
+dados_apartamento_salvar = salvar_dados(dados)
 
 funcoes = [{'nome': 'Dados Gerais','funcao':visualizar_dados(dados)}]
+
+print(dados_apartamento_salvar)

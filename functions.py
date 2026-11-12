@@ -108,4 +108,11 @@ def analisar_quartos(dado):
     """
     filtragem = dado.query('Quartos >= 2 and Valor < 3000 and Area > 70')
     return filtragem
-    
+
+def salvar_dados(dado):
+    """
+    Essa função salva, no formato csv, uma tabela com os dados de todos os apartamentos da tabela geral
+    """
+    apartamentos = dado.query("Tipo == 'Apartamento'")
+    salvamento = apartamentos.to_csv('dados_apartamento.csv', index=False, sep=';')
+    return salvamento
