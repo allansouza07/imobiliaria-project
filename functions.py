@@ -50,15 +50,16 @@ def grafico_valor(url):
     url.plot(
         kind='barh',
         figsize=(10, 5),
-        color='purple'
+        color='purple',
+        title = 'Tipos imobiliários com maiores valores'
     )
     return plt.show()
 
 def grafico_percentual(url):
     """
-    Essa função retorna um gráfico percentual da variável 'porcentos'
+    Essa função retorna um gráfico percentual da variável 'porcentos', que revela a porcentagem de cada categoria da coluna Tipo
     """
-    url.plot(kind='bar', figsize=(14,18), color = 'blue',xlabel = 'Tipos', ylabel = 'Percentual')
+    url.plot(kind='bar', figsize=(14,18), color = 'blue',xlabel = 'Tipos', ylabel = 'Percentual', title='Porcentagem da presença de cada tipo em relação ao total')
 
     return plt.show()
 
@@ -90,3 +91,21 @@ def eliminar_nulos(dado):
     Essa função elimina registros com valores nulos de uma variável
     """
     return dado.dropna(subset=['Valor', 'Condominio'], inplace=True)
+
+def analisar_quartos_unicos(dado):
+    """
+    Essa função revela os apartamentos com quartos únicos e preços acima de 1200 da variável Dados
+    """
+    filtro1 = dado['Quartos'] == 1
+    filtro2 = dado['Valor'] > 1200
+    filtragem = filtro1 & filtro2
+
+    return dado[filtragem]
+
+def analisar_quartos(dado):
+    """
+    Essa função revela os apartamentos com 2 quartos ou mais, que custem
+    """
+    filtragem = dado.query('Quartos >= 2 and Valor < 3000 and Area > 70')
+    return filtragem
+    
