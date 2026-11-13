@@ -1,5 +1,5 @@
 import pandas as pd
-from functions import visualizar_dados, primeiras_linhas, ultimas_linhas, shape_array, column_array,info_array, mean_columns, grafico_valor, grafico_percentual, bairros_apartamentos, verificacao_nulos,valores_nulos, eliminar_nulos,analisar_quartos_unicos,analisar_quartos,salvar_dados
+from functions import visualizar_dados, primeiras_linhas, ultimas_linhas, shape_array, column_array,info_array, mean_columns, grafico_valor, grafico_percentual, bairros_apartamentos, verificacao_nulos,valores_nulos, eliminar_nulos,analisar_quartos_unicos,analisar_quartos,salvar_dados, criar_coluna_valor_mensal
 
 #IMPORTANDO OS DADOS DA TABELA
 url = 'https://raw.githubusercontent.com/alura-cursos/pandas-conhecendo-a-biblioteca/main/base-de-dados/aluguel.csv'
@@ -29,7 +29,11 @@ eliminacao_valores_nulos = eliminar_nulos(dados)
 analise_quarto_unico = analisar_quartos_unicos(dados)
 analise_quartos = analisar_quartos(dados)
 dados_apartamento_salvar = salvar_dados(dados)
+valor_mensal = criar_coluna_valor_mensal(dados)
+
 
 funcoes = [{'nome': 'Dados Gerais','funcao':visualizar_dados(dados)}]
 
-print(dados_apartamento_salvar)
+dados['Descricao'] = dados['Tipo'] + ' em ' + dados['Bairro'] + ' com ' + dados['Quartos'].astype(str) + ' quarto(s) ' + ' e ' + dados['Vagas'].astype(str) + ' vaga(s) de garagem.'
+
+dados['Possui_suite'] = dados['Suites'].apply(lambda x: "Sim" if x > 0 else "Não")

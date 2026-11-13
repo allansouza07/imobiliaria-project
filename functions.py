@@ -116,3 +116,12 @@ def salvar_dados(dado):
     apartamentos = dado.query("Tipo == 'Apartamento'")
     salvamento = apartamentos.to_csv('dados_apartamento.csv', index=False, sep=';')
     return salvamento
+
+def criar_coluna_valor_mensal(dado):
+    """
+    Essa função calcula a coluna de valor com a de condominio, resultando no valor mensal do imóvel
+    """
+    dados = dado.fillna(0)
+    dados['Valor_por_mes'] = dados['Valor'] + dados['Condominio']
+    return dados
+
