@@ -115,6 +115,7 @@ def salvar_dados(dado):
     """
     apartamentos = dado.query("Tipo == 'Apartamento'")
     salvamento = apartamentos.to_csv('dados_apartamento.csv', index=False, sep=';')
+    print("Pronto! Verifique suas pastas!")
     return salvamento
 
 def criar_coluna_valor_mensal(dado):
@@ -124,4 +125,14 @@ def criar_coluna_valor_mensal(dado):
     dados = dado.fillna(0)
     dados['Valor_por_mes'] = dados['Valor'] + dados['Condominio']
     return dados
+
+def descricao_imoveis(dado):
+    dado['Descricao'] = dado['Tipo'] + ' em ' + dado['Bairro'] + ' com ' + dado['Quartos'].astype(str) + ' quarto(s) ' + ' e ' + dado['Vagas'].astype(str) + ' vaga(s) de garagem.'
+
+    return dado
+
+def tem_suite(dado):
+    dado['Possui_suite'] = dado['Suites'].apply(lambda x: "Sim" if x > 0 else "Não")
+
+    return dado
 
